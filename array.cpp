@@ -187,7 +187,7 @@ int main() {
 }*/
 
 //六
-
+/*
 #include<iostream>
 using namespace std;
 int main() {
@@ -229,5 +229,198 @@ int main() {
 	}
 
 
+
+}*/
+/*
+#include<iostream>
+using namespace std;
+int main() {
+	//num1小于num2,10<=mun1<num2
+	int num1, num2;
+	int i, j, k;
+
+	cin >> num1 >> num2;
+	//遍历num1到num2之间的数
+	for (i = num1; i <= num2; i++) {
+		int a[100];
+		k = 0;
+		int b,d=0;
+		d = i;
+		while (d  != 0) {
+			//cout << "debug d =" << d << endl;
+			b = d % 10;
+			//cout <<  "var b =" << b << endl;
+			a[k] = b;
+
+			d=d / 10;
+			//cout << "a[" << k << "] =" << a[k] << endl;
+			k++;
+		}
+
+		int flag = 1;
+		k = k -1;
+		if ((k + 1) % 2 == 0) {
+			for (j = 0; j <= (k / 2); j++) {
+			//cout << " k " << k << endl;
+			if (a[j] != a[(k - j)]) {
+				//cout << "===" << i << " ";
+				flag = 0;
+				break;
+			}
+
+			}
+
+		}
+		else {
+			for (j = 0; j < (k / 2); j++) {
+				//cout << " k " << k << endl;
+				if (a[j] != a[(k - j)]) {
+					//cout << "===" << i << " ";
+					flag = 0;
+					break;
+				}
+
+			}
+		}
+
+
+		if (flag == 1) {
+			cout << i<<" ";
+		}
+
+	}
+
+
+
+
+}*/
+
+//九
+//一只兔子躲进了 10 个环形分布的洞的某一个，狼第一次在第一个洞没有找到兔子，
+//就隔一个洞，再到第三个洞去找，也没有找到，就隔两个洞，到第六个洞去找，以后每次多隔一个洞 去找兔子……
+//这样下去，结果一直找不到兔子，编程输出第n次找洞时，兔子可能藏在哪几个洞中？
+/*
+#include<iostream>
+using namespace std;
+int main() {
+	int tru[10];
+	int n;
+
+	cin >> n;
+
+	for (int i = 0; i <= 9; i++) {//全赋值为一，找得到的洞赋值为0，最后循环找数
+		tru[i] = 1;
+	}
+
+	int mum;
+	for (int i = 1; i <= n; i++) {
+		mum = (2 + i) * (i - 1) / 2;
+		mum = mum % 10;
+		tru[mum] = 0;
+		mum = 0;
+	}
+
+	for (int i = 0; i <= 9; i++) {
+		if (tru[i] == 1) {
+			cout << i+1<<endl;
+		}
+
+	}
+
+
+}*/
+
+//十
+/*
+#include<iostream>
+using namespace std;
+int main() {
+	int m, n;
+	cin >> m >> n;
+	int a[m][n];
+}*/
+
+
+//十一
+/*
+#include<iostream>
+using namespace std;
+int main() {
+	const int N = 20;
+	int a[N][N];
+	int n, m, i, j;
+	cin >> n;
+
+	a[0][0] = 0;
+	for (i = 0;  i <= n;i++) {
+		m = i;
+		for (j = 0; j <= m; j++) {
+			a[i][0] = 1;
+
+			if (i > 0 && j > 0) {
+				a[i][j] = a[i - 1][j - 1] + a[i - 1][j];
+			}
+			a[i][i] = 1;
+		}
+
+	}
+
+	for (i = 0; i <= n; i++) {
+		m = i;
+		for (j = 0; j <= m; j++) {
+			cout << a[i][j] << "    ";
+		}
+		cout << endl;
+	}
+
+
+
+}*/
+
+//十二
+
+#include<iostream>
+using namespace std;
+int main() {
+	const int M = 100, N = 2;
+	int a[M][N] = { 0 };
+	int b[M][N] = { 0 };
+	int m = 0, n, i, j, max;
+
+	//输入二维数组
+	for (m = 0; m < 100; m++) {
+		for (n = 0; n < 2; n++) {
+			cin >> a[m][n];
+		}
+
+		if (a[m][0] == 0 && a[m][1] == 0) {
+			break;
+		}
+	}
+	max = a[0][0];
+
+
+
+
+	for (j = 0; j <= m; j++) {
+		n = a[j][0];
+		b[n][1] += a[j][1];
+	}
+
+
+
+
+
+	//按顺序打印出值
+	for (i = max; i >= 0; i--) {
+		if (b[i][1] != 0 && i != 0) {
+			cout << b[i][1] << "x" << "^" << i << "+";
+
+		}
+		if (i == 0) {
+			cout << b[i][1];
+		}
+
+	}
 
 }
